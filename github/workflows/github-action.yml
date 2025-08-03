@@ -1,0 +1,142 @@
+name: github-action
+run-name: ${{ github.actor }} is out building GitHub Actions
+
+on:
+  push:
+    # Pattern matched against refs/tags
+    tags:        
+      - '**' 
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Build Maven Projects
+        run: |
+          mvn clean package -f ./usermanagement/pom.xml
+          mvn clean package -f ./chatbot/pom.xml
+          mvn clean package -f ./post/pom.xml
+          mvn clean package -f ./projectmanagement/pom.xml
+          mvn clean package -f ./attachment/pom.xml
+          mvn clean package -f ./comment/pom.xml
+          mvn clean package -f ./invite/pom.xml
+          mvn clean package -f ./boundedcontext3516049382716049/pom.xml
+          mvn clean package -f ./boundedcontext3293827160493827/pom.xml
+          mvn clean package -f ./boundedcontext40572015456211416/pom.xml
+
+      - name: Docker Build and push for Usermanagement
+        uses: docker/build-push-action@v4
+        with:
+          context: ./usermanagement
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/usermanagement:latest
+            ghcr.io/${{ github.repository }}/usermanagement:${{ github.ref_name }}
+            
+      - name: Docker Build and push for Chatbot
+        uses: docker/build-push-action@v4
+        with:
+          context: ./chatbot
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/chatbot:latest
+            ghcr.io/${{ github.repository }}/chatbot:${{ github.ref_name }}
+            
+      - name: Docker Build and push for Post
+        uses: docker/build-push-action@v4
+        with:
+          context: ./post
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/post:latest
+            ghcr.io/${{ github.repository }}/post:${{ github.ref_name }}
+            
+      - name: Docker Build and push for Projectmanagement
+        uses: docker/build-push-action@v4
+        with:
+          context: ./projectmanagement
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/projectmanagement:latest
+            ghcr.io/${{ github.repository }}/projectmanagement:${{ github.ref_name }}
+            
+      - name: Docker Build and push for Attachment
+        uses: docker/build-push-action@v4
+        with:
+          context: ./attachment
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/attachment:latest
+            ghcr.io/${{ github.repository }}/attachment:${{ github.ref_name }}
+            
+      - name: Docker Build and push for Comment
+        uses: docker/build-push-action@v4
+        with:
+          context: ./comment
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/comment:latest
+            ghcr.io/${{ github.repository }}/comment:${{ github.ref_name }}
+            
+      - name: Docker Build and push for Invite
+        uses: docker/build-push-action@v4
+        with:
+          context: ./invite
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/invite:latest
+            ghcr.io/${{ github.repository }}/invite:${{ github.ref_name }}
+            
+      - name: Docker Build and push for Boundedcontext3516049382716049
+        uses: docker/build-push-action@v4
+        with:
+          context: ./boundedcontext3516049382716049
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/boundedcontext3516049382716049:latest
+            ghcr.io/${{ github.repository }}/boundedcontext3516049382716049:${{ github.ref_name }}
+            
+      - name: Docker Build and push for Boundedcontext3293827160493827
+        uses: docker/build-push-action@v4
+        with:
+          context: ./boundedcontext3293827160493827
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/boundedcontext3293827160493827:latest
+            ghcr.io/${{ github.repository }}/boundedcontext3293827160493827:${{ github.ref_name }}
+            
+      - name: Docker Build and push for Boundedcontext40572015456211416
+        uses: docker/build-push-action@v4
+        with:
+          context: ./boundedcontext40572015456211416
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/boundedcontext40572015456211416:latest
+            ghcr.io/${{ github.repository }}/boundedcontext40572015456211416:${{ github.ref_name }}
+            

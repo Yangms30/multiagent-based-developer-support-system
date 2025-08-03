@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boundedcontext40572015456211416
+  labels:
+    app: boundedcontext40572015456211416
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: boundedcontext40572015456211416
+  template:
+    metadata:
+      labels:
+        app: boundedcontext40572015456211416
+    spec:
+      containers:
+        - name: boundedcontext40572015456211416
+          image: "username/boundedcontext40572015456211416:latest"
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 15
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 15
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5

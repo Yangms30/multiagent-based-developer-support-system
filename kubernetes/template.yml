@@ -1,0 +1,570 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usermanagement
+  labels:
+    app: usermanagement
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: usermanagement
+  template:
+    metadata:
+      labels:
+        app: usermanagement
+    spec:
+      containers:
+        - name: usermanagement
+          image: username/usermanagement:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatbot
+  labels:
+    app: chatbot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatbot
+  template:
+    metadata:
+      labels:
+        app: chatbot
+    spec:
+      containers:
+        - name: chatbot
+          image: username/chatbot:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: post
+  labels:
+    app: post
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: post
+  template:
+    metadata:
+      labels:
+        app: post
+    spec:
+      containers:
+        - name: post
+          image: username/post:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: projectmanagement
+  labels:
+    app: projectmanagement
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: projectmanagement
+  template:
+    metadata:
+      labels:
+        app: projectmanagement
+    spec:
+      containers:
+        - name: projectmanagement
+          image: username/projectmanagement:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: attachment
+  labels:
+    app: attachment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: attachment
+  template:
+    metadata:
+      labels:
+        app: attachment
+    spec:
+      containers:
+        - name: attachment
+          image: username/attachment:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: comment
+  labels:
+    app: comment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comment
+  template:
+    metadata:
+      labels:
+        app: comment
+    spec:
+      containers:
+        - name: comment
+          image: username/comment:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invite
+  labels:
+    app: invite
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: invite
+  template:
+    metadata:
+      labels:
+        app: invite
+    spec:
+      containers:
+        - name: invite
+          image: username/invite:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boundedcontext3516049382716049
+  labels:
+    app: boundedcontext3516049382716049
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: boundedcontext3516049382716049
+  template:
+    metadata:
+      labels:
+        app: boundedcontext3516049382716049
+    spec:
+      containers:
+        - name: boundedcontext3516049382716049
+          image: username/boundedcontext3516049382716049:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boundedcontext3293827160493827
+  labels:
+    app: boundedcontext3293827160493827
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: boundedcontext3293827160493827
+  template:
+    metadata:
+      labels:
+        app: boundedcontext3293827160493827
+    spec:
+      containers:
+        - name: boundedcontext3293827160493827
+          image: username/boundedcontext3293827160493827:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boundedcontext40572015456211416
+  labels:
+    app: boundedcontext40572015456211416
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: boundedcontext40572015456211416
+  template:
+    metadata:
+      labels:
+        app: boundedcontext40572015456211416
+    spec:
+      containers:
+        - name: boundedcontext40572015456211416
+          image: username/boundedcontext40572015456211416:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: usermanagement
+  labels:
+    app: usermanagement
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: usermanagement
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: chatbot
+  labels:
+    app: chatbot
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: chatbot
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: post
+  labels:
+    app: post
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: post
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: projectmanagement
+  labels:
+    app: projectmanagement
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: projectmanagement
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: attachment
+  labels:
+    app: attachment
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: attachment
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: comment
+  labels:
+    app: comment
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: comment
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: invite
+  labels:
+    app: invite
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: invite
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: boundedcontext3516049382716049
+  labels:
+    app: boundedcontext3516049382716049
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: boundedcontext3516049382716049
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: boundedcontext3293827160493827
+  labels:
+    app: boundedcontext3293827160493827
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: boundedcontext3293827160493827
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: boundedcontext40572015456211416
+  labels:
+    app: boundedcontext40572015456211416
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: boundedcontext40572015456211416
+
