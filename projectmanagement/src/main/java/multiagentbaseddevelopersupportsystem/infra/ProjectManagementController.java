@@ -34,6 +34,12 @@ public class ProjectManagementController {
             "##### /projectManagement/createProject  called #####"
         );
         ProjectManagement projectManagement = new ProjectManagement();
+        // 값 복사
+        projectManagement.setProjectName(createProjectCommand.getProjectName());
+        projectManagement.setProjectDescription(createProjectCommand.getProjectDescription());
+        projectManagement.setProjectStatus("INIT");
+        // 필요시 추가 필드도 복사
+
         projectManagement.createProject(createProjectCommand);
         projectManagementRepository.save(projectManagement);
         return projectManagement;

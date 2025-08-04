@@ -10,4 +10,5 @@ public class CreateProjectCommand {
     private String projectName;
     private String projectDescription;
     private List<String> attachments;
+    private ProjectStatus projectStatus;
 }
